@@ -23,8 +23,16 @@ function genOperator(){
 }
 
 function genResult(){
-  task.first_arg = genNum(10, 2);
-  task.second_arg = genNum(10, 2);
+
+  if(task.operator == '+' || task.operator == '-'){
+    task.first_arg = genNum(100, 2);
+    task.second_arg = genNum(100, 2);
+  } else {
+
+    task.first_arg = genNum(10, 2);
+    task.second_arg = genNum(10, 2);
+  }
+  
   return task.result = math_it_up[task.operator](task.first_arg, task.second_arg)
 }
 
@@ -36,8 +44,12 @@ function genNextTask(){
   task.task_num++
 }
 
+function reset(){
+  task.task_num = 0;
+}
+
 genNextTask()
 
 
 
-module.exports = {task, genNextTask}
+module.exports = {task, genNextTask, reset}

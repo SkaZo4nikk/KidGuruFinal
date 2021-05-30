@@ -26,11 +26,9 @@ app.get("/main_page", async (req, res, next) => {
 
 app.get("/math_guru", async (req, res, next) => {
   try {
-    if(req.query.next > 0){
-      console.log(MathGuru.genNextTask())
-      MathGuru.genNextTask()
+    if(req.query.task > 0){
+      MathGuru.reset()
     }
-
     return success(res, MathGuru.task)
   } catch(err) {
     next({ status: 400, message: "failed to get the game" })

@@ -31,7 +31,6 @@ app.get("/math_guru", async (req, res, next) => {
     }
     if(req.query.task > 0){
       MathGuru.reset()
-      MathGuru.genNextTask()
     }
     return success(res, MathGuru.task)
   } catch(err) {
